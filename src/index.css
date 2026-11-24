@@ -1,0 +1,98 @@
+/* VOICE   occasion, romantic and bright: a love letter told in ten chapters
+   IDEA    a romantic film in chapters, with falling petals and a «Мончок» ticket
+   PICTURE line drawings in rose ink, a sunset city, a heart around «Ты мне нравишься»
+   COLOUR  blush ground, peach and pink light, deep wine ink, bright rose accent
+   TYPE    Cormorant Garamond for titles, Manrope for text, Oswald for the ticket, Marck Script for the last line
+   LAYOUT  one full-height scene at a time; content column up to ~1100px; phone stacks title, picture, controls */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: #fff0f2;
+  color: #4a1028;
+}
+
+body {
+  font-family: Manrope, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+::selection {
+  background: rgba(255,92,138, 0.3);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 1px solid #e11d5c;
+  outline-offset: 4px;
+}
+
+.safe-x {
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+}
+
+.balance {
+  text-wrap: balance;
+}
+
+.pretty {
+  text-wrap: pretty;
+}
+
+/* Scrollable scene body without visible scrollbars */
+.scene-scroll {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.scene-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Light sweep over the ticket */
+.sweep {
+  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.6) 50%, transparent 65%);
+  background-size: 250% 100%;
+  animation: sweep 5.5s ease-in-out infinite;
+}
+@keyframes sweep {
+  0% { background-position: 130% 0; }
+  55%, 100% { background-position: -130% 0; }
+}
+
+.perf {
+  background-image: radial-gradient(circle, #fff0f2 2.4px, transparent 2.6px);
+  background-size: 14px 10px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sweep {
+    animation: none;
+  }
+}
